@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustancia P S.A.S.</title>
+<link rel="icon" type="image/jpeg" href="https://ugc.production.linktr.ee/840d7b57-933e-4d1f-b961-ef6d3f3b0a2a_Ilustracion-sin-titulo-10.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:      #012165;
+  --blue-mid:  #1E4D96;
+  --blue-lite: #EBF0FA;
+  --white:     #FFFFFF;
+  --bg:        #F3F5FB;
+  --text:      #0F2550;
+  --muted:     #94A3B8;
+  --border:    rgba(1,33,101,0.09);
+  --shadow-sm: 0 1px 8px  rgba(1,33,101,0.06);
+  --shadow:    0 3px 18px rgba(1,33,101,0.09);
+  --shadow-md: 0 8px 32px rgba(1,33,101,0.13);
+  --r:         16px;
+  --font:      'Nunito', sans-serif;
+
+  --yellow: #F59E0B; --yellow-bg: rgba(245,158,11,0.10);
+  --green:  #16A34A; --green-bg:  rgba(22,163,74,0.10);
+  --red:    #DC2626; --red-bg:    rgba(220,38,38,0.10);
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* Soft ambient — barely there */
+body::before {
+  content: '';
+  position: fixed;
+  width: 600px; height: 600px;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(1,33,101,0.05) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Page ── */
+.page {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 420px;
+  padding: 56px 20px 64px;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ─────────────────────────────
+   PROFILE
+───────────────────────────── */
+.profile {
+  display: flex; flex-direction: column; align-items: center;
+  margin-bottom: 36px;
+  animation: up 0.55s cubic-bezier(0.25,0.8,0.25,1) both;
+}
+
+.avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%; padding: 2.5px;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px rgba(1,33,101,0.1), var(--shadow-md);
+  margin-bottom: 16px;
+}
+.avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%; overflow: hidden;
+  background: var(--blue-lite);
+}
+.avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+
+.brand-name {
+  font-size: 1.35rem; font-weight: 900;
+  color: var(--blue); letter-spacing: -0.3px;
+  text-align: center; margin-bottom: 5px;
+}
+.brand-tag {
+  font-size: 11px; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.04em;
+  text-align: center; max-width: 240px; line-height: 1.5;
+}
+
+/* ─────────────────────────────
+   DIVIDER
+───────────────────────────── */
+.divider {
+  width: 100%; height: 1px;
+  background: var(--border);
+  margin-bottom: 28px;
+  animation: fade 0.5s 0.2s ease both;
+}
+
+/* ─────────────────────────────
+   SECTION HEADER
+───────────────────────────── */
+.section-header {
+  width: 100%;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  animation: fade 0.4s ease both;
+}
+.section-title {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.section-badge {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 2px 9px; border-radius: 60px;
+}
+
+/* ─────────────────────────────
+   PRODUCT GROUP CARD
+   EKG course as a grouped unit
+───────────────────────────── */
+.product-group {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 28px;
+  animation: up 0.45s ease both;
+}
+
+/* Group header */
+.group-head {
+  display: flex; align-items: center; gap: 11px;
+  padding: 14px 18px 13px;
+  background: var(--blue);
+  border-bottom: none;
+}
+.group-head-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.group-head-text { flex: 1; }
+.group-head-label {
+  font-size: 0.8rem; font-weight: 900;
+  color: rgba(255,255,255,0.95);
+  letter-spacing: 0.01em;
+}
+.group-head-sub {
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1px;
+}
+
+/* Country row */
+.country-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px;
+  text-decoration: none; color: var(--text);
+  border-top: 1px solid var(--border);
+  transition: background 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+.country-row:first-of-type { border-top: none; }
+.country-row:hover { background: var(--bg); }
+.country-row:active { background: var(--blue-lite); }
+
+.country-flag { font-size: 1.25rem; flex-shrink: 0; line-height: 1; }
+.country-name {
+  font-size: 0.875rem; font-weight: 800;
+  color: var(--text); flex: 1;
+}
+.badge {
+  font-size: 10px; font-weight: 800;
+  padding: 2px 8px; border-radius: 60px;
+  flex-shrink: 0; letter-spacing: 0.03em;
+}
+.student-count {
+  font-size: 10.5px; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.01em;
+  flex-shrink: 0; margin-right: 2px;
+}
+.country-chevron {
+  color: var(--muted); font-size: 0.9rem;
+  font-weight: 700; flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────
+   LINK LIST
+───────────────────────────── */
+.link-list {
+  width: 100%;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+  animation: up 0.45s ease both;
+}
+
+/* Single link card */
+.link-card {
+  display: flex; align-items: center; gap: 13px;
+  padding: 15px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  text-decoration: none; color: var(--text);
+  overflow: hidden; cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(1,33,101,0.18);
+}
+.link-card:active { transform: scale(0.985); }
+
+/* Left accent stripe */
+.link-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  border-radius: var(--r) 0 0 var(--r);
+  background: var(--accent, var(--blue));
+  opacity: 0; transition: opacity 0.15s;
+}
+.link-card:hover::before { opacity: 1; }
+
+/* Icon */
+.lc-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.34,1.4,0.64,1);
+}
+.link-card:hover .lc-icon { transform: scale(1.1) rotate(-5deg); }
+
+.lc-body { flex: 1; min-width: 0; }
+.lc-label { font-size: 0.875rem; font-weight: 800; color: var(--text); }
+.lc-sub   { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+
+.lc-arrow {
+  color: var(--muted); font-size: 0.9rem; font-weight: 700;
+  opacity: 0; transform: translateX(-4px);
+  transition: opacity 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.link-card:hover .lc-arrow { opacity: 0.7; transform: translateX(0); }
+
+/* Color tokens */
+.b-blue   { background: var(--blue-lite); }
+.b-green  { background: var(--green-bg); }
+.b-red    { background: var(--red-bg); }
+.b-yellow { background: var(--yellow-bg); }
+
+.t-blue   { background: var(--blue-lite);  color: var(--blue); }
+.t-yellow { background: var(--yellow-bg);  color: var(--yellow); }
+.t-green  { background: var(--green-bg);   color: var(--green); }
+.t-red    { background: var(--red-bg);     color: var(--red); }
+.t-blue   { background: var(--blue-lite);  color: var(--blue); }
+
+/* ─────────────────────────────
+   FOOTER
+───────────────────────────── */
+.footer {
+  margin-top: 28px;
+  font-size: 10px; font-weight: 700;
+  color: rgba(1,33,101,0.22);
+  letter-spacing: 0.08em; text-transform: uppercase; text-align: center;
+}
+
+/* ─────────────────────────────
+   ANIMATIONS
+───────────────────────────── */
+.d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+.d4{animation-delay:.24s}.d5{animation-delay:.30s}.d6{animation-delay:.36s}
+.d7{animation-delay:.42s}.d8{animation-delay:.48s}
+
+@keyframes up {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fade {
+  from { opacity:0; } to { opacity:1; }
+}
+
+/* Ripple */
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(1,33,101,0.06);
+  transform: scale(0);
+  animation: rpl 0.5s linear; pointer-events: none;
+}
+@keyframes rpl { to { transform:scale(4); opacity:0; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── PROFILE ── -->
+  <div class="profile">
+    <div class="avatar">
+      <div class="avatar-inner">
+        <img
+          src="https://ugc.production.linktr.ee/840d7b57-933e-4d1f-b961-ef6d3f3b0a2a_Ilustracion-sin-titulo-10.jpeg"
+          alt="Sustancia P"
+          onerror="this.parentElement.innerHTML='<div style=width:100%;height:100%;background:#EBF0FA;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#012165>SP</div>'"
+        >
+      </div>
+    </div>
+    <h1 class="brand-name">Sustancia P</h1>
+    <p class="brand-tag">Estudia medicina con + Lógica − Memoria</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── EKG PRODUCT GROUP ── -->
+  <div class="section-header d1">
+    <span class="section-title">Producto más vendido</span>
+    <span class="section-badge t-green">Más de 8.000 inscritos</span>
+  </div>
+
+  <div class="product-group d2">
+    <div class="group-head">
+      <div class="group-head-icon">⚡</div>
+      <div class="group-head-text">
+        <div class="group-head-label">Curso EKG Básico y Patológico</div>
+        <div class="group-head-sub">Selecciona tu país · Precio adaptado a tu región</div>
+      </div>
+    </div>
+
+    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-internacional?utm_source=linktree&utm_medium=bio_link&utm_campaign=ventas_pc&utm_content=linktree_menu" target="_blank" rel="noopener">
+      <span class="country-flag">🇲🇽</span>
+      <span class="country-name">México</span>
+      <span class="student-count">+3.000 inscritos</span>
+      <span class="country-chevron">›</span>
+    </a>
+
+    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-espana" target="_blank" rel="noopener">
+      <span class="country-flag">🇪🇸</span>
+      <span class="country-name">España</span>
+      <span class="student-count">+1.500 inscritos</span>
+      <span class="country-chevron">›</span>
+    </a>
+
+    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-colombia" target="_blank" rel="noopener">
+      <span class="country-flag">🇨🇴</span>
+      <span class="country-name">Colombia</span>
+      <span class="student-count">+1.000 inscritos</span>
+      <span class="country-chevron">›</span>
+    </a>
+
+    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-argentina" target="_blank" rel="noopener">
+      <span class="country-flag">🇦🇷</span>
+      <span class="country-name">Argentina</span>
+      <span class="student-count">+2.500 inscritos</span>
+      <span class="country-chevron">›</span>
+    </a>
+
+    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-latam" target="_blank" rel="noopener">
+      <span class="country-flag">🌍</span>
+      <span class="country-name">Otros países</span>
+      <span class="country-chevron">›</span>
+    </a>
+  </div>
+
+  <!-- ── MORE INFO ── -->
+  <div class="section-header d4" style="animation-delay:.26s">
+    <span class="section-title">Más información</span>
+  </div>
+
+  <div class="link-list">
+
+    <a class="link-card d5" style="--accent:var(--blue)"
+      href="https://hotmart.com/es/club/equipo-sustancia-p" target="_blank" rel="noopener">
+      <div class="lc-icon b-blue">🔑</div>
+      <div class="lc-body">
+        <div class="lc-label">Iniciar sesión</div>
+        <div class="lc-sub">Club Sustancia P · Hotmart</div>
+      </div>
+      <span class="lc-arrow">›</span>
+    </a>
+
+    <a class="link-card d6" style="--accent:var(--blue)"
+      href="https://www.sustanciap.com/" target="_blank" rel="noopener">
+      <div class="lc-icon b-blue">📚</div>
+      <div class="lc-body">
+        <div class="lc-label">Editorial Sustancia P ®</div>
+        <div class="lc-sub">Libros, cursos y más recursos</div>
+      </div>
+      <span class="lc-arrow">›</span>
+    </a>
+
+    <a class="link-card d7" style="--accent:var(--green)"
+      href="https://wa.me/573004067138" target="_blank" rel="noopener">
+      <div class="lc-icon b-green">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#16A34A">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="lc-body">
+        <div class="lc-label">WhatsApp</div>
+        <div class="lc-sub">Escríbenos sin pena</div>
+      </div>
+      <span class="badge t-green" style="margin-right:6px">En línea</span>
+      <span class="lc-arrow">›</span>
+    </a>
+
+    <a class="link-card d8" style="--accent:var(--red)"
+      href="https://wa.link/c4na97" target="_blank" rel="noopener">
+      <div class="lc-icon b-red">🫀</div>
+      <div class="lc-body">
+        <div class="lc-label">Órganos de peluche</div>
+        <div class="lc-sub">Solo disponible en Colombia</div>
+      </div>
+      <span class="badge t-red" style="margin-right:6px">🇨🇴 Col.</span>
+      <span class="lc-arrow">›</span>
+    </a>
+
+  </div>
+
+  <p class="footer">Sustancia P S.A.S. &nbsp;·&nbsp; Barranquilla, Colombia</p>
+
+</div>
+
+<script>
+document.querySelectorAll('.link-card, .country-row').forEach(el => {
+  el.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const s = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX-rect.left-s/2}px;top:${e.clientY-rect.top-s/2}px`;
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 500);
+  });
+});
+</script>
+</body>
+</html>
