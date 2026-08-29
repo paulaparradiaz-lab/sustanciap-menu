@@ -27,6 +27,13 @@
   --yellow: #F59E0B; --yellow-bg: rgba(245,158,11,0.10);
   --green:  #16A34A; --green-bg:  rgba(22,163,74,0.10);
   --red:    #DC2626; --red-bg:    rgba(220,38,38,0.10);
+
+  /* Clinical Hub | Sustancia Pro */
+  --lime:      #ADDC00;
+  --lime-text: #5F7A00;
+  --lime-dark: #2F3D00;
+  --lime-bg:   rgba(173,220,0,0.16);
+  --lime-brd:  rgba(95,122,0,0.20);
 }
 
 body {
@@ -39,7 +46,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Soft ambient — barely there */
 body::before {
   content: '';
   position: fixed;
@@ -52,7 +58,6 @@ body::before {
   z-index: 0;
 }
 
-/* ── Page ── */
 .page {
   position: relative; z-index: 1;
   width: 100%; max-width: 420px;
@@ -65,10 +70,9 @@ body::before {
 ───────────────────────────── */
 .profile {
   display: flex; flex-direction: column; align-items: center;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
   animation: up 0.55s cubic-bezier(0.25,0.8,0.25,1) both;
 }
-
 .avatar {
   width: 80px; height: 80px;
   border-radius: 50%; padding: 2.5px;
@@ -94,212 +98,265 @@ body::before {
   text-align: center; max-width: 240px; line-height: 1.5;
 }
 
-/* ─────────────────────────────
-   DIVIDER
-───────────────────────────── */
 .divider {
   width: 100%; height: 1px;
   background: var(--border);
-  margin-bottom: 28px;
+  margin-bottom: 26px;
   animation: fade 0.5s 0.2s ease both;
 }
 
 /* ─────────────────────────────
-   SECTION HEADER
+   CATEGORÍA (cintillo + filas)
 ───────────────────────────── */
-.section-header {
+.cat {
   width: 100%;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  animation: fade 0.4s ease both;
-}
-.section-title {
-  font-size: 10px; font-weight: 800;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--muted);
-}
-.section-badge {
-  font-size: 10px; font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 2px 9px; border-radius: 60px;
-}
-
-/* ─────────────────────────────
-   PRODUCT GROUP CARD
-   EKG course as a grouped unit
-───────────────────────────── */
-.product-group {
-  width: 100%;
-  background: var(--white);
-  border: 1px solid var(--border);
   border-radius: var(--r);
-  box-shadow: var(--shadow);
   overflow: hidden;
-  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
   animation: up 0.45s ease both;
 }
 
-/* Group header */
-.group-head {
-  display: flex; align-items: center; gap: 11px;
-  padding: 14px 18px 13px;
-  background: var(--blue);
-  border-bottom: none;
+.cat-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  padding: 11px 16px;
 }
-.group-head-icon {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.12);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0;
-}
-.group-head-text { flex: 1; }
-.group-head-label {
-  font-size: 0.8rem; font-weight: 900;
-  color: rgba(255,255,255,0.95);
+.cat-name {
+  font-size: 0.85rem; font-weight: 900;
   letter-spacing: 0.01em;
 }
-.group-head-sub {
-  font-size: 10px; font-weight: 600;
-  color: rgba(255,255,255,0.55);
-  margin-top: 1px;
+.cat-aud {
+  font-size: 9.5px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 60px;
+  flex-shrink: 0;
 }
 
-/* Country row */
-.country-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 13px 18px;
-  text-decoration: none; color: var(--text);
-  border-top: 1px solid var(--border);
-  transition: background 0.15s ease;
-  position: relative;
-  overflow: hidden;
-}
-.country-row:first-of-type { border-top: none; }
-.country-row:hover { background: var(--bg); }
-.country-row:active { background: var(--blue-lite); }
+/* Sustancia Pro */
+.cat.pro { border: 1px solid var(--lime-brd); }
+.cat.pro .cat-head { background: var(--lime); }
+.cat.pro .cat-name { color: var(--lime-dark); }
+.cat.pro .cat-aud  { background: rgba(255,255,255,0.52); color: var(--lime-dark); }
+.cat.pro .row:active { background: var(--lime-bg); }
 
-.country-flag { font-size: 1.25rem; flex-shrink: 0; line-height: 1; }
-.country-name {
-  font-size: 0.875rem; font-weight: 800;
-  color: var(--text); flex: 1;
-}
-.badge {
-  font-size: 10px; font-weight: 800;
-  padding: 2px 8px; border-radius: 60px;
-  flex-shrink: 0; letter-spacing: 0.03em;
-}
-.student-count {
-  font-size: 10.5px; font-weight: 700;
-  color: var(--muted); letter-spacing: 0.01em;
-  flex-shrink: 0; margin-right: 2px;
-}
-.country-chevron {
-  color: var(--muted); font-size: 0.9rem;
-  font-weight: 700; flex-shrink: 0;
-  opacity: 0.5;
-}
+/* Sustancia P */
+.cat.sp { border: 1px solid rgba(1,33,101,0.14); }
+.cat.sp .cat-head { background: var(--blue); }
+.cat.sp .cat-name { color: var(--white); }
+.cat.sp .cat-aud  { background: rgba(255,255,255,0.16); color: var(--blue-lite); }
 
-/* ─────────────────────────────
-   LINK LIST
-───────────────────────────── */
-.link-list {
+/* ── Filas ── */
+.row {
   width: 100%;
-  display: flex; flex-direction: column;
-  gap: 8px;
-  margin-bottom: 0;
-  animation: up 0.45s ease both;
-}
-
-/* Single link card */
-.link-card {
-  display: flex; align-items: center; gap: 13px;
-  padding: 15px 18px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
+  border: none;
+  border-top: 1px solid var(--border);
   text-decoration: none; color: var(--text);
-  overflow: hidden; cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.15s ease;
-  box-shadow: var(--shadow-sm);
-  position: relative;
+  font-family: var(--font); text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  position: relative; overflow: hidden;
 }
-.link-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  border-color: rgba(1,33,101,0.18);
-}
-.link-card:active { transform: scale(0.985); }
+.row:hover { background: var(--bg); }
+.row:focus-visible { outline: 2px solid var(--blue-mid); outline-offset: -3px; }
+.cat.pro .row:focus-visible { outline-color: var(--lime-text); }
+.row:active { background: var(--blue-lite); }
 
-/* Left accent stripe */
-.link-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-  border-radius: var(--r) 0 0 var(--r);
-  background: var(--accent, var(--blue));
-  opacity: 0; transition: opacity 0.15s;
-}
-.link-card:hover::before { opacity: 1; }
 
-/* Icon */
-.lc-icon {
+.row-icon {
   width: 36px; height: 36px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem; flex-shrink: 0;
   transition: transform 0.2s cubic-bezier(0.34,1.4,0.64,1);
 }
-.link-card:hover .lc-icon { transform: scale(1.1) rotate(-5deg); }
+.row:hover .row-icon { transform: scale(1.08) rotate(-4deg); }
 
-.lc-body { flex: 1; min-width: 0; }
-.lc-label { font-size: 0.875rem; font-weight: 800; color: var(--text); }
-.lc-sub   { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+.row-icon.has-img { background: var(--white); overflow: hidden; padding: 0; }
+.row-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.lc-arrow {
-  color: var(--muted); font-size: 0.9rem; font-weight: 700;
-  opacity: 0; transform: translateX(-4px);
-  transition: opacity 0.15s, transform 0.15s; flex-shrink: 0;
+.row-body { flex: 1; min-width: 0; }
+.row-label { font-size: 0.875rem; font-weight: 800; color: var(--text); }
+.row-sub   { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+.cat.pro .row-sub.tint { color: var(--lime-text); }
+
+.row-flags { font-size: 0.9rem; letter-spacing: 0.5px; flex-shrink: 0; }
+.row-chev  { color: var(--muted); font-size: 0.9rem; font-weight: 700; opacity: 0.55; flex-shrink: 0; }
+.cat.pro .row-chev { color: var(--lime-text); opacity: 0.8; }
+.cat.pro .row-chev { color: var(--lime-text); opacity: 0.8; }
+
+/* Contador */
+.countdown {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px;
+  background: #F7FCE4;
+  border-top: 1px solid var(--lime-brd);
 }
-.link-card:hover .lc-arrow { opacity: 0.7; transform: translateX(0); }
+.cd-label {
+  font-size: 9.5px; font-weight: 800;
+  letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--lime-text); flex: 1; line-height: 1.35;
+}
+.cd-clock { display: flex; gap: 5px; flex-shrink: 0; }
+.cd-unit {
+  min-width: 34px;
+  background: var(--white);
+  border: 1px solid var(--lime-brd);
+  border-radius: 8px;
+  padding: 4px 3px 3px;
+  text-align: center;
+}
+.cd-num {
+  font-size: 0.85rem; font-weight: 900;
+  color: var(--lime-dark); line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cd-tag {
+  font-size: 8px; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--lime-text); margin-top: 2px;
+}
+.countdown.done .cd-clock { display: none; }
 
-/* Color tokens */
-.b-blue   { background: var(--blue-lite); }
-.b-green  { background: var(--green-bg); }
-.b-red    { background: var(--red-bg); }
-.b-yellow { background: var(--yellow-bg); }
+/* Separador interno */
+.row-sep {
+  background: #FAFBFE;
+  border-top: 1px solid var(--border);
+  padding: 7px 16px;
+  font-size: 9.5px; font-weight: 800;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--muted);
+}
 
-.t-blue   { background: var(--blue-lite);  color: var(--blue); }
-.t-yellow { background: var(--yellow-bg);  color: var(--yellow); }
-.t-green  { background: var(--green-bg);   color: var(--green); }
-.t-red    { background: var(--red-bg);     color: var(--red); }
-.t-blue   { background: var(--blue-lite);  color: var(--blue); }
+/* Iconos de fondo */
+.i-lime  { background: var(--lime); color: var(--lime-dark); }
+.i-limes { background: var(--lime-bg); color: var(--lime-text); }
+.i-blue  { background: var(--blue); color: var(--white); }
+.i-blues { background: var(--blue-lite); color: var(--blue); }
+.i-green { background: var(--green-bg); }
+.i-red   { background: var(--red-bg); }
+
+.badge {
+  font-size: 10px; font-weight: 800;
+  padding: 2px 8px; border-radius: 60px;
+  flex-shrink: 0; letter-spacing: 0.03em;
+}
+.t-green { background: var(--green-bg); color: var(--green); }
+.t-red   { background: var(--red-bg);   color: var(--red); }
+
+/* ─────────────────────────────
+   MODAL
+───────────────────────────── */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(1,33,101,0.42);
+  backdrop-filter: blur(3px);
+  z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.22s ease;
+  padding: 20px;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+.modal {
+  width: 100%; max-width: 420px;
+  background: var(--white);
+  max-width: 380px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transform: translateY(12px) scale(0.96);
+  transition: transform 0.26s cubic-bezier(0.25,0.9,0.3,1);
+  max-height: 86vh; overflow-y: auto;
+}
+.modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+
+.modal-head {
+  padding: 14px 18px 13px;
+}
+.modal-head-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.modal-title { font-size: 0.92rem; font-weight: 900; }
+.modal-sub { font-size: 10.5px; font-weight: 700; margin-top: 2px; }
+
+.modal-close {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: none; cursor: pointer;
+  font-size: 0.95rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-family: var(--font);
+  transition: background 0.15s;
+}
+
+/* Cabecera lima (Sustancia Pro) */
+.modal.pro .modal-head { background: var(--lime); }
+.modal.pro .modal-title { color: var(--lime-dark); }
+.modal.pro .modal-sub { color: var(--lime-text); }
+.modal.pro .modal-close { background: rgba(255,255,255,0.45); color: var(--lime-dark); }
+.modal.pro .modal-close:hover { background: rgba(255,255,255,0.75); }
+
+/* Cabecera azul (Sustancia P) */
+.modal.sp .modal-head { background: var(--blue); }
+.modal.sp .modal-title { color: var(--white); }
+.modal.sp .modal-sub { color: rgba(255,255,255,0.6); }
+.modal.sp .modal-close { background: rgba(255,255,255,0.16); color: var(--white); }
+.modal.sp .modal-close:hover { background: rgba(255,255,255,0.3); }
+
+/* Cuadrícula de países */
+.modal-body {
+  padding: 14px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.country-tile {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px 10px;
+  text-align: center;
+  text-decoration: none; color: var(--text);
+  background: var(--white);
+  transition: transform 0.16s ease, border-color 0.15s, background 0.15s;
+  position: relative; overflow: hidden;
+}
+.country-tile:hover { transform: translateY(-2px); }
+.country-tile:active { transform: scale(0.98); }
+.country-tile.wide { grid-column: 1 / -1; }
+
+.tile-flag { font-size: 1.85rem; line-height: 1; }
+.tile-name { font-size: 0.8rem; font-weight: 800; color: var(--text); margin-top: 7px; }
+.tile-sub  { font-size: 10px; font-weight: 700; margin-top: 1px; }
+
+.modal.pro .country-tile { border-color: var(--lime-brd); }
+.modal.pro .country-tile:hover { border-color: var(--lime); background: #FBFEF2; }
+.modal.pro .tile-sub { color: var(--lime-text); }
+
+.modal.sp .country-tile:hover { border-color: rgba(1,33,101,0.28); background: #FAFBFE; }
+.modal.sp .tile-sub { color: var(--muted); }
 
 /* ─────────────────────────────
    FOOTER
 ───────────────────────────── */
 .footer {
-  margin-top: 28px;
+  margin-top: 22px;
   font-size: 10px; font-weight: 700;
   color: rgba(1,33,101,0.22);
   letter-spacing: 0.08em; text-transform: uppercase; text-align: center;
 }
 
-/* ─────────────────────────────
-   ANIMATIONS
-───────────────────────────── */
-.d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
-.d4{animation-delay:.24s}.d5{animation-delay:.30s}.d6{animation-delay:.36s}
-.d7{animation-delay:.42s}.d8{animation-delay:.48s}
+/* ── Animaciones ── */
+.d1{animation-delay:.06s}.d2{animation-delay:.14s}.d3{animation-delay:.22s}
 
 @keyframes up {
   from { opacity:0; transform:translateY(14px); }
   to   { opacity:1; transform:translateY(0); }
 }
-@keyframes fade {
-  from { opacity:0; } to { opacity:1; }
-}
+@keyframes fade { from { opacity:0; } to { opacity:1; } }
 
-/* Ripple */
 .ripple {
   position: absolute; border-radius: 50%;
   background: rgba(1,33,101,0.06);
@@ -307,6 +364,8 @@ body::before {
   animation: rpl 0.5s linear; pointer-events: none;
 }
 @keyframes rpl { to { transform:scale(4); opacity:0; } }
+
+body.locked { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -330,117 +389,224 @@ body::before {
 
   <div class="divider"></div>
 
-  <!-- ── EKG PRODUCT GROUP ── -->
-  <div class="section-header d1">
-    <span class="section-title">Producto más vendido</span>
-    <span class="section-badge t-green">Más de 8.000 inscritos</span>
-  </div>
-
-  <div class="product-group d2">
-    <div class="group-head">
-      <div class="group-head-icon">⚡</div>
-      <div class="group-head-text">
-        <div class="group-head-label">Curso EKG Básico y Patológico</div>
-        <div class="group-head-sub">Selecciona tu país · Precio adaptado a tu región</div>
-      </div>
+  <!-- ═══════════ SUSTANCIA PRO ═══════════ -->
+  <div class="cat pro d1">
+    <div class="cat-head">
+      <span class="cat-name">Sustancia Pro</span>
+      <span class="cat-aud">Profesionales</span>
     </div>
 
-    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-internacional?utm_source=linktree&utm_medium=bio_link&utm_campaign=ventas_pc&utm_content=linktree_menu" target="_blank" rel="noopener">
-      <span class="country-flag">🇲🇽</span>
-      <span class="country-name">México</span>
-      <span class="student-count">+3.000 inscritos</span>
-      <span class="country-chevron">›</span>
-    </a>
+    <button class="row" data-modal="modal-ch">
+      <div class="row-icon i-lime has-img">
+        <img src="clinicalhub.png" alt="Clinical Hub"
+             onerror="this.parentElement.classList.remove('has-img');this.parentElement.textContent='🩺'">
+      </div>
+      <div class="row-body">
+        <div class="row-label">Clinical Hub</div>
+        <div class="row-sub tint">Guías clínicas actualizadas · Suscripción</div>
+      </div>
+      <span class="row-flags">🇨🇴 🇲🇽</span>
+      <span class="row-chev">›</span>
+    </button>
 
-    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-espana" target="_blank" rel="noopener">
-      <span class="country-flag">🇪🇸</span>
-      <span class="country-name">España</span>
-      <span class="student-count">+1.500 inscritos</span>
-      <span class="country-chevron">›</span>
-    </a>
-
-    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-colombia" target="_blank" rel="noopener">
-      <span class="country-flag">🇨🇴</span>
-      <span class="country-name">Colombia</span>
-      <span class="student-count">+1.000 inscritos</span>
-      <span class="country-chevron">›</span>
-    </a>
-
-    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-argentina" target="_blank" rel="noopener">
-      <span class="country-flag">🇦🇷</span>
-      <span class="country-name">Argentina</span>
-      <span class="student-count">+2.500 inscritos</span>
-      <span class="country-chevron">›</span>
-    </a>
-
-    <a class="country-row" href="https://www.sustanciap.com/cursoecgbasicoypatologico-latam" target="_blank" rel="noopener">
-      <span class="country-flag">🌍</span>
-      <span class="country-name">Otros países</span>
-      <span class="country-chevron">›</span>
-    </a>
+    <div class="countdown" id="cd" data-deadline="2026-09-16T00:00:00-05:00">
+      <span class="cd-label" id="cd-label">Precio de lanzamiento termina en</span>
+      <div class="cd-clock">
+        <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-tag">días</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-tag">hrs</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-tag">min</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-tag">seg</div></div>
+      </div>
+    </div>
   </div>
 
-  <!-- ── MORE INFO ── -->
-  <div class="section-header d4" style="animation-delay:.26s">
-    <span class="section-title">Más información</span>
-  </div>
+  <!-- ═══════════ SUSTANCIA P ═══════════ -->
+  <div class="cat sp d2">
+    <div class="cat-head">
+      <span class="cat-name">Sustancia P</span>
+      <span class="cat-aud">Estudiantes</span>
+    </div>
 
-  <div class="link-list">
-
-    <a class="link-card d5" style="--accent:var(--blue)"
-      href="https://hotmart.com/es/club/equipo-sustancia-p" target="_blank" rel="noopener">
-      <div class="lc-icon b-blue">🔑</div>
-      <div class="lc-body">
-        <div class="lc-label">Iniciar sesión</div>
-        <div class="lc-sub">Club Sustancia P · Hotmart</div>
+    <button class="row" data-modal="modal-ekg">
+      <div class="row-icon i-blue has-img">
+        <img src="ekg.png" alt="Curso EKG"
+             onerror="this.parentElement.classList.remove('has-img');this.parentElement.textContent='⚡'">
       </div>
-      <span class="lc-arrow">›</span>
+      <div class="row-body">
+        <div class="row-label">Curso EKG Básico y Patológico</div>
+        <div class="row-sub">Elige tu país · +8.000 inscritos</div>
+      </div>
+      <span class="row-flags">🇲🇽 🇦🇷 🇪🇸</span>
+      <span class="row-chev">›</span>
+    </button>
+
+    <div class="row-sep">Más información</div>
+
+    <a class="row" href="https://hotmart.com/es/club/equipo-sustancia-p" target="_blank" rel="noopener">
+      <div class="row-icon i-blues">🔑</div>
+      <div class="row-body">
+        <div class="row-label">Iniciar sesión</div>
+        <div class="row-sub">Club Sustancia P · Hotmart</div>
+      </div>
+      <span class="row-chev">›</span>
     </a>
 
-    <a class="link-card d6" style="--accent:var(--blue)"
-      href="https://www.sustanciap.com/" target="_blank" rel="noopener">
-      <div class="lc-icon b-blue">📚</div>
-      <div class="lc-body">
-        <div class="lc-label">Editorial Sustancia P ®</div>
-        <div class="lc-sub">Libros, cursos y más recursos</div>
+    <a class="row" href="https://www.sustanciap.com/" target="_blank" rel="noopener">
+      <div class="row-icon i-blues">📚</div>
+      <div class="row-body">
+        <div class="row-label">Editorial Sustancia P ®</div>
+        <div class="row-sub">Libros, cursos y más recursos</div>
       </div>
-      <span class="lc-arrow">›</span>
+      <span class="row-chev">›</span>
     </a>
 
-    <a class="link-card d7" style="--accent:var(--green)"
-      href="https://wa.me/573004067138" target="_blank" rel="noopener">
-      <div class="lc-icon b-green">
+    <a class="row" href="https://organosdepeluche.sustanciap.com/" target="_blank" rel="noopener">
+      <div class="row-icon i-red">🫀</div>
+      <div class="row-body">
+        <div class="row-label">Órganos de peluche</div>
+        <div class="row-sub">Solo disponible en Colombia</div>
+      </div>
+      <span class="badge t-red">🇨🇴 Col.</span>
+      <span class="row-chev">›</span>
+    </a>
+
+    <a class="row" href="https://wa.me/573004067138" target="_blank" rel="noopener">
+      <div class="row-icon i-green">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="#16A34A">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
       </div>
-      <div class="lc-body">
-        <div class="lc-label">WhatsApp</div>
-        <div class="lc-sub">Escríbenos sin pena</div>
+      <div class="row-body">
+        <div class="row-label">WhatsApp</div>
+        <div class="row-sub">Escríbenos sin pena</div>
       </div>
-      <span class="badge t-green" style="margin-right:6px">En línea</span>
-      <span class="lc-arrow">›</span>
+      <span class="badge t-green">En línea</span>
+      <span class="row-chev">›</span>
     </a>
-
-    <a class="link-card d8" style="--accent:var(--red)"
-      href="https://organosdepeluche.sustanciap.com/" target="_blank" rel="noopener">
-      <div class="lc-icon b-red">🫀</div>
-      <div class="lc-body">
-        <div class="lc-label">Órganos de peluche</div>
-        <div class="lc-sub">Solo disponible en Colombia</div>
-      </div>
-      <span class="badge t-red" style="margin-right:6px">🇨🇴 Col.</span>
-      <span class="lc-arrow">›</span>
-    </a>
-
   </div>
 
   <p class="footer">Sustancia P S.A.S. &nbsp;·&nbsp; Barranquilla, Colombia</p>
 
 </div>
 
+<!-- ═══════════ MODAL CLINICAL HUB ═══════════ -->
+<div class="modal-backdrop" id="modal-ch">
+  <div class="modal pro" role="dialog" aria-modal="true" aria-label="Clinical Hub · elige tu país">
+    <div class="modal-head">
+      <div class="modal-head-row">
+        <div>
+          <div class="modal-title">Clinical Hub</div>
+          <div class="modal-sub">Elige dónde estás</div>
+        </div>
+        <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <a class="country-tile" href="https://clinicalhub.sustanciapro.com/colombia/" target="_blank" rel="noopener">
+        <div class="tile-flag">🇨🇴</div>
+        <div class="tile-name">Colombia</div>
+        <div class="tile-sub">Precio en COP</div>
+      </a>
+      <a class="country-tile" href="https://clinicalhub.sustanciapro.com/mexico/" target="_blank" rel="noopener">
+        <div class="tile-flag">🇲🇽</div>
+        <div class="tile-name">México</div>
+        <div class="tile-sub">Precio en MXN</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL CURSO EKG ═══════════ -->
+<div class="modal-backdrop" id="modal-ekg">
+  <div class="modal sp" role="dialog" aria-modal="true" aria-label="Curso EKG · elige tu país">
+    <div class="modal-head">
+      <div class="modal-head-row">
+        <div>
+          <div class="modal-title">Curso EKG Básico y Patológico</div>
+          <div class="modal-sub">Elige dónde estás</div>
+        </div>
+        <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <a class="country-tile" href="https://www.sustanciap.com/cursoecgbasicoypatologico-internacional?utm_source=linktree&utm_medium=bio_link&utm_campaign=ventas_pc&utm_content=linktree_menu" target="_blank" rel="noopener">
+        <div class="tile-flag">🇲🇽</div>
+        <div class="tile-name">México</div>
+        <div class="tile-sub">+3.000 inscritos</div>
+      </a>
+      <a class="country-tile" href="https://www.sustanciap.com/cursoecgbasicoypatologico-argentina" target="_blank" rel="noopener">
+        <div class="tile-flag">🇦🇷</div>
+        <div class="tile-name">Argentina</div>
+        <div class="tile-sub">+2.500 inscritos</div>
+      </a>
+      <a class="country-tile" href="https://www.sustanciap.com/cursoecgbasicoypatologico-espana" target="_blank" rel="noopener">
+        <div class="tile-flag">🇪🇸</div>
+        <div class="tile-name">España</div>
+        <div class="tile-sub">+1.500 inscritos</div>
+      </a>
+      <a class="country-tile" href="https://www.sustanciap.com/cursoecgbasicoypatologico-colombia" target="_blank" rel="noopener">
+        <div class="tile-flag">🇨🇴</div>
+        <div class="tile-name">Colombia</div>
+        <div class="tile-sub">+1.000 inscritos</div>
+      </a>
+      <a class="country-tile wide" href="https://www.sustanciap.com/cursoecgbasicoypatologico-latam" target="_blank" rel="noopener">
+        <div class="tile-flag">🌍</div>
+        <div class="tile-name">Otros países</div>
+        <div class="tile-sub">Precio internacional</div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
-document.querySelectorAll('.link-card, .country-row').forEach(el => {
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.add('open');
+  document.body.classList.add('locked');
+}
+function closeModals() {
+  document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open'));
+  document.body.classList.remove('locked');
+}
+
+document.querySelectorAll('[data-modal]').forEach(btn => {
+  btn.addEventListener('click', () => openModal(btn.dataset.modal));
+});
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeModals));
+document.querySelectorAll('.modal-backdrop').forEach(bd => {
+  bd.addEventListener('click', e => { if (e.target === bd) closeModals(); });
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
+
+/* ── Contador Clinical Hub ── */
+(function () {
+  const box = document.getElementById('cd');
+  if (!box) return;
+  const end = new Date(box.dataset.deadline).getTime();
+  const pad = n => String(n).padStart(2, '0');
+  const el = { d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
+               m: document.getElementById('cd-m'), s: document.getElementById('cd-s') };
+
+  function tick() {
+    let diff = end - Date.now();
+    if (diff <= 0) {
+      box.classList.add('done');
+      document.getElementById('cd-label').textContent = 'Promoción finalizada';
+      clearInterval(timer);
+      return;
+    }
+    const sec = Math.floor(diff / 1000);
+    el.d.textContent = pad(Math.floor(sec / 86400));
+    el.h.textContent = pad(Math.floor(sec % 86400 / 3600));
+    el.m.textContent = pad(Math.floor(sec % 3600 / 60));
+    el.s.textContent = pad(sec % 60);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+document.querySelectorAll('.row, .country-tile').forEach(el => {
   el.addEventListener('click', function(e) {
     const rect = this.getBoundingClientRect();
     const r = document.createElement('span');
