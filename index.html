@@ -14,13 +14,14 @@
   --blue-mid:  #1E4D96;
   --blue-lite: #EBF0FA;
   --white:     #FFFFFF;
-  --bg:        #F3F5FB;
+  --bg:        #FCFCFB;
+  --hover:     #F3F3F0;
   --text:      #0F2550;
   --muted:     #94A3B8;
   --border:    rgba(1,33,101,0.09);
-  --shadow-sm: 0 1px 8px  rgba(1,33,101,0.06);
-  --shadow:    0 3px 18px rgba(1,33,101,0.09);
-  --shadow-md: 0 8px 32px rgba(1,33,101,0.13);
+  --shadow-sm: 0 1px 6px  rgba(15,18,25,0.05);
+  --shadow:    0 2px 14px rgba(15,18,25,0.07), 0 0 0 1px rgba(15,18,25,0.04);
+  --shadow-md: 0 8px 30px rgba(15,18,25,0.12);
   --r:         16px;
   --font:      'Nunito', sans-serif;
 
@@ -124,7 +125,7 @@ body::before {
 }
 .cat-name {
   font-size: 0.85rem; font-weight: 900;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.05em;
 }
 .cat-aud {
   font-size: 9.5px; font-weight: 800;
@@ -160,7 +161,7 @@ body::before {
   transition: background 0.15s ease;
   position: relative; overflow: hidden;
 }
-.row:hover { background: var(--bg); }
+.row:hover { background: var(--hover); }
 .row:focus-visible { outline: 2px solid var(--blue-mid); outline-offset: -3px; }
 .cat.pro .row:focus-visible { outline-color: var(--lime-text); }
 .row:active { background: var(--blue-lite); }
@@ -222,7 +223,7 @@ body::before {
 
 /* Separador interno */
 .row-sep {
-  background: #FAFBFE;
+  background: #F7F7F5;
   border-top: 1px solid var(--border);
   padding: 7px 16px;
   font-size: 9.5px; font-weight: 800;
@@ -335,7 +336,7 @@ body::before {
 .modal.pro .country-tile:hover { border-color: var(--lime); background: #FBFEF2; }
 .modal.pro .tile-sub { color: var(--lime-text); }
 
-.modal.sp .country-tile:hover { border-color: rgba(1,33,101,0.28); background: #FAFBFE; }
+.modal.sp .country-tile:hover { border-color: rgba(1,33,101,0.28); background: #F7F7F5; }
 .modal.sp .tile-sub { color: var(--muted); }
 
 /* ─────────────────────────────
@@ -365,6 +366,57 @@ body::before {
 }
 @keyframes rpl { to { transform:scale(4); opacity:0; } }
 
+/* ── Contador animado ── */
+.cd-label::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--lime); margin-right: 6px;
+  vertical-align: 1px;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(173,220,0,0.5); }
+  50%      { opacity: 0.5; box-shadow: 0 0 0 5px rgba(173,220,0,0); }
+}
+.cd-unit { transition: transform 0.18s cubic-bezier(0.34,1.5,0.64,1); }
+.cd-unit.tick { transform: scale(1.14); }
+.countdown.done .cd-label::before { display: none; }
+
+/* ── Fila protagonista + fila próximamente ── */
+.row.hero { padding: 17px 16px; }
+.row.hero .row-icon { width: 44px; height: 44px; border-radius: 12px; }
+.row.hero .row-label { font-size: 0.98rem; letter-spacing: -0.01em; }
+.row.hero .row-sub { font-size: 11.5px; margin-top: 3px; }
+
+/* ── Opción D · Sustancia Pro en negro ── */
+.cat.pro { border: 1px solid #2A2A28; }
+.cat.pro .cat-head { background: #0B0B0B; }
+.cat.pro .cat-name { color: var(--lime); }
+.cat.pro .cat-aud  { background: rgba(173,220,0,0.16); color: #D8E9A0; }
+.cat.pro .row {
+  background: #141413;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  color: #FFFFFF;
+}
+.cat.pro .row:hover  { background: #1C1C1A; }
+.cat.pro .row:active { background: #232320; }
+.cat.pro .row:focus-visible { outline-color: var(--lime); }
+.cat.pro .row-label { color: #FFFFFF; }
+.cat.pro .row-sub, .cat.pro .row-sub.tint { color: #9AA88A; }
+.cat.pro .row-chev { color: #9AA88A; opacity: 0.9; }
+.cat.pro .row-icon.has-img { background: #FFFFFF; }
+.cat.pro .ripple { background: rgba(255,255,255,0.10); }
+.cat.pro .countdown {
+  background: #0F0F0E;
+  border-top: 1px solid rgba(255,255,255,0.09);
+}
+.cat.pro .cd-label, .cat.pro .cd-tag { color: #9AA88A; }
+.cat.pro .cd-unit {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.cat.pro .cd-num { color: var(--lime); }
+
 body.locked { overflow: hidden; }
 </style>
 </head>
@@ -384,7 +436,7 @@ body.locked { overflow: hidden; }
       </div>
     </div>
     <h1 class="brand-name">Sustancia P</h1>
-    <p class="brand-tag">Estudia medicina con + Lógica − Memoria</p>
+    <p class="brand-tag">+ Lógica − Memoria</p>
   </div>
 
   <div class="divider"></div>
@@ -396,7 +448,7 @@ body.locked { overflow: hidden; }
       <span class="cat-aud">Profesionales</span>
     </div>
 
-    <button class="row" data-modal="modal-ch">
+    <a class="row hero" href="https://clinicalhub.sustanciapro.com/latam/" target="_blank" rel="noopener">
       <div class="row-icon i-lime has-img">
         <img src="clinicalhub.png" alt="Clinical Hub"
              onerror="this.parentElement.classList.remove('has-img');this.parentElement.textContent='🩺'">
@@ -405,9 +457,9 @@ body.locked { overflow: hidden; }
         <div class="row-label">Clinical Hub</div>
         <div class="row-sub tint">Guías clínicas actualizadas · Suscripción</div>
       </div>
-      <span class="row-flags">🇨🇴 🇲🇽</span>
+      <span class="row-flags">🌎</span>
       <span class="row-chev">›</span>
-    </button>
+    </a>
 
     <div class="countdown" id="cd" data-deadline="2026-09-16T00:00:00-05:00">
       <span class="cd-label" id="cd-label">Precio de lanzamiento termina en</span>
@@ -487,33 +539,6 @@ body.locked { overflow: hidden; }
 
   <p class="footer">Sustancia P S.A.S. &nbsp;·&nbsp; Barranquilla, Colombia</p>
 
-</div>
-
-<!-- ═══════════ MODAL CLINICAL HUB ═══════════ -->
-<div class="modal-backdrop" id="modal-ch">
-  <div class="modal pro" role="dialog" aria-modal="true" aria-label="Clinical Hub · elige tu país">
-    <div class="modal-head">
-      <div class="modal-head-row">
-        <div>
-          <div class="modal-title">Clinical Hub</div>
-          <div class="modal-sub">Elige dónde estás</div>
-        </div>
-        <button class="modal-close" data-close aria-label="Cerrar">×</button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <a class="country-tile" href="https://clinicalhub.sustanciapro.com/colombia/" target="_blank" rel="noopener">
-        <div class="tile-flag">🇨🇴</div>
-        <div class="tile-name">Colombia</div>
-        <div class="tile-sub">Precio en COP</div>
-      </a>
-      <a class="country-tile" href="https://clinicalhub.sustanciapro.com/mexico/" target="_blank" rel="noopener">
-        <div class="tile-flag">🇲🇽</div>
-        <div class="tile-name">México</div>
-        <div class="tile-sub">Precio en MXN</div>
-      </a>
-    </div>
-  </div>
 </div>
 
 <!-- ═══════════ MODAL CURSO EKG ═══════════ -->
@@ -600,7 +625,13 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(
     el.d.textContent = pad(Math.floor(sec / 86400));
     el.h.textContent = pad(Math.floor(sec % 86400 / 3600));
     el.m.textContent = pad(Math.floor(sec % 3600 / 60));
-    el.s.textContent = pad(sec % 60);
+    const ss = pad(sec % 60);
+    if (el.s.textContent !== ss) {
+      el.s.textContent = ss;
+      const u = el.s.parentElement;
+      u.classList.add('tick');
+      setTimeout(() => u.classList.remove('tick'), 180);
+    }
   }
   tick();
   const timer = setInterval(tick, 1000);
