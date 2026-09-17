@@ -246,6 +246,8 @@ body::before {
   flex-shrink: 0; letter-spacing: 0.03em;
 }
 .t-green { background: var(--green-bg); color: var(--green); }
+.t-lime  { background: var(--lime-bg); color: var(--lime-text); }
+.row-title { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
 .t-red   { background: var(--red-bg);   color: var(--red); }
 
 /* ─────────────────────────────
@@ -403,6 +405,7 @@ body::before {
 .cat.pro .row:active { background: #232320; }
 .cat.pro .row:focus-visible { outline-color: var(--lime); }
 .cat.pro .row-label { color: #FFFFFF; }
+.cat.pro .t-lime { background: rgba(173,220,0,0.16); color: var(--lime); }
 .cat.pro .row-sub, .cat.pro .row-sub.tint { color: #9AA88A; }
 .cat.pro .row-chev { color: #9AA88A; opacity: 0.9; }
 .cat.pro .row-icon.has-img { background: #FFFFFF; }
@@ -457,15 +460,15 @@ body.locked { overflow: hidden; }
              onerror="this.parentElement.classList.remove('has-img');this.parentElement.textContent='🩺'">
       </div>
       <div class="row-body">
-        <div class="row-label">Clinical Hub</div>
-        <div class="row-sub tint">Guías clínicas actualizadas · Suscripción</div>
+        <div class="row-title"><span class="row-label">Clinical Hub</span><span class="badge t-lime">Mensual</span></div>
+        <div class="row-sub tint">Guías internacionales unificadas y contrastadas</div>
       </div>
       <span class="row-flags">🌎</span>
       <span class="row-chev">›</span>
     </a>
 
     <div class="countdown social">
-      <span class="cd-label"><b>+300 médicos</b> suscritos &middot; <i>guías nuevas cada semana</i></span>
+      <span class="cd-label"><b>+300 médicos suscritos</b> &middot; <i>actualización semanal</i></span>
     </div>
   </div>
 
