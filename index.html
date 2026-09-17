@@ -219,7 +219,8 @@ body::before {
   letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--lime-text); margin-top: 2px;
 }
-.countdown.done .cd-clock { display: none; }
+.countdown.social { gap: 0; }
+.countdown.social .cd-label { font-size: 10px; letter-spacing: 0.08em; }
 
 /* Separador interno */
 .row-sep {
@@ -463,14 +464,8 @@ body.locked { overflow: hidden; }
       <span class="row-chev">›</span>
     </a>
 
-    <div class="countdown" id="cd" data-deadline="2026-09-16T00:00:00-05:00">
-      <span class="cd-label" id="cd-label">Miembros fundadores · <b>45% OFF vitalicio</b> <i>+ voto en lo que viene</i> · Cierra en:</span>
-      <div class="cd-clock">
-        <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-tag">días</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-tag">hrs</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-tag">min</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-tag">seg</div></div>
-      </div>
+    <div class="countdown social">
+      <span class="cd-label"><b>+300 médicos</b> suscritos &middot; <i>guías nuevas cada semana</i></span>
     </div>
   </div>
 
@@ -605,39 +600,6 @@ document.querySelectorAll('.modal-backdrop').forEach(bd => {
   bd.addEventListener('click', e => { if (e.target === bd) closeModals(); });
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
-
-/* ── Contador Clinical Hub ── */
-(function () {
-  const box = document.getElementById('cd');
-  if (!box) return;
-  const end = new Date(box.dataset.deadline).getTime();
-  const pad = n => String(n).padStart(2, '0');
-  const el = { d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
-               m: document.getElementById('cd-m'), s: document.getElementById('cd-s') };
-
-  function tick() {
-    let diff = end - Date.now();
-    if (diff <= 0) {
-      box.classList.add('done');
-      document.getElementById('cd-label').textContent = 'Promoción finalizada';
-      clearInterval(timer);
-      return;
-    }
-    const sec = Math.floor(diff / 1000);
-    el.d.textContent = pad(Math.floor(sec / 86400));
-    el.h.textContent = pad(Math.floor(sec % 86400 / 3600));
-    el.m.textContent = pad(Math.floor(sec % 3600 / 60));
-    const ss = pad(sec % 60);
-    if (el.s.textContent !== ss) {
-      el.s.textContent = ss;
-      const u = el.s.parentElement;
-      u.classList.add('tick');
-      setTimeout(() => u.classList.remove('tick'), 180);
-    }
-  }
-  tick();
-  const timer = setInterval(tick, 1000);
-})();
 
 document.querySelectorAll('.row, .country-tile').forEach(el => {
   el.addEventListener('click', function(e) {
